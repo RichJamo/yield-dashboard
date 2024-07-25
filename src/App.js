@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { fetchYields } from './fetchYields';
 
 function App() {
+  const [yieldData, setYieldData] = useState(null);
+
+  useEffect(() => {
+    async function getYieldData() {
+      try {
+        const data = await fetchYields();
+        setYieldData(data);
+      } catch (error) {
+        console.error("Error fetching yield data:", error);
+      }
+    }
+
+    getYieldData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Dapp Lending Protocol Yields</h1>
+      {yieldData !== null ? (
+        <p>Current Yield: {yieldData}%</p>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
