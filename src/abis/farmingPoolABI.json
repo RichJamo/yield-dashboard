@@ -1,0 +1,21 @@
+[
+  {
+    "inputs": [],
+    "name": "farmInfo",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint40", "name": "finished", "type": "uint40" },
+          { "internalType": "uint32", "name": "duration", "type": "uint32" },
+          { "internalType": "uint184", "name": "reward", "type": "uint184" },
+          { "internalType": "uint256", "name": "balance", "type": "uint256" }
+        ],
+        "internalType": "struct FarmAccounting.Info",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
